@@ -1,0 +1,296 @@
+================================================================================
+DETALLE DEL ANÁLISIS DE VENTAS - PASO A PASO
+Ejercicio: Listas, Tuplas y Diccionarios (Core)
+Curso: Python Fundamentals - Sonda
+================================================================================
+
+================================================================================
+PASO 1: CARGA DE DATOS
+================================================================================
+
+¿QUÉ SE HIZO?
+Se creó una lista de diccionarios llamada "ventas". Cada diccionario representa
+una venta individual con 4 claves:
+- "fecha": fecha de la venta (formato texto)
+- "producto": nombre del producto vendido
+- "cantidad": número entero de unidades vendidas
+- "precio": precio unitario del producto (número decimal)
+
+¿CÓMO SE HIZO?
+Se definió la variable ventas = [ {...}, {...}, ... ] con 10 diccionarios.
+
+RESULTADO OBTENIDO:
+Se cargaron 10 ventas registradas entre el 1 y 5 de enero de 2024.
+
+LISTA DE VENTAS ORIGINAL:
+────────────────────────────────────────────────────────────────────────────
+Venta 1:  {'fecha': '2024-01-01', 'producto': 'Laptop', 'cantidad': 2, 'precio': 800.0}
+Venta 2:  {'fecha': '2024-01-01', 'producto': 'Mouse', 'cantidad': 5, 'precio': 25.0}
+Venta 3:  {'fecha': '2024-01-02', 'producto': 'Teclado', 'cantidad': 3, 'precio': 45.0}
+Venta 4:  {'fecha': '2024-01-02', 'producto': 'Laptop', 'cantidad': 1, 'precio': 800.0}
+Venta 5:  {'fecha': '2024-01-03', 'producto': 'Mouse', 'cantidad': 8, 'precio': 25.0}
+Venta 6:  {'fecha': '2024-01-03', 'producto': 'Monitor', 'cantidad': 2, 'precio': 300.0}
+Venta 7:  {'fecha': '2024-01-04', 'producto': 'Teclado', 'cantidad': 4, 'precio': 45.0}
+Venta 8:  {'fecha': '2024-01-04', 'producto': 'Laptop', 'cantidad': 1, 'precio': 800.0}
+Venta 9:  {'fecha': '2024-01-05', 'producto': 'Monitor', 'cantidad': 3, 'precio': 300.0}
+Venta 10: {'fecha': '2024-01-05', 'producto': 'Mouse', 'cantidad': 6, 'precio': 25.0}
+
+================================================================================
+PASO 2: CÁLCULO DE INGRESOS TOTALES
+================================================================================
+
+¿QUÉ SE HIZO?
+Se calculó el total de dinero generado por todas las ventas.
+
+¿CÓMO SE HIZO?
+Se utilizó un bucle "for" que recorre cada venta y realiza:
+- ingreso_por_venta = cantidad × precio
+- Se acumula en ingresos_totales
+
+FÓRMULA: Ingresos totales = Σ (cantidad_i × precio_i)
+
+CÁLCULO DETALLADO VENTA POR VENTA:
+────────────────────────────────────────────────────────────────────────────
+Venta 1: 2 × $800 = $1,600
+Venta 2: 5 × $25  = $125
+Venta 3: 3 × $45  = $135
+Venta 4: 1 × $800 = $800
+Venta 5: 8 × $25  = $200
+Venta 6: 2 × $300 = $600
+Venta 7: 4 × $45  = $180
+Venta 8: 1 × $800 = $800
+Venta 9: 3 × $300 = $900
+Venta 10: 6 × $25 = $150
+────────────────────────────────────────────────────────────────────────────
+SUMA TOTAL: $1,600 + $125 + $135 + $800 + $200 + $600 + $180 + $800 + $900 + $150
+
+RESULTADO OBTENIDO:
+Ingresos totales = $5,490.00
+
+================================================================================
+PASO 3: ANÁLISIS DEL PRODUCTO MÁS VENDIDO
+================================================================================
+
+¿QUÉ SE HIZO?
+Se identificó qué producto tuvo la mayor cantidad de unidades vendidas.
+
+¿CÓMO SE HIZO?
+1. Se creó un diccionario vacío "ventas_por_producto"
+2. Se recorrió cada venta y se sumó la cantidad por producto
+3. Se usó max() para encontrar el producto con mayor cantidad
+
+CÁLCULO DETALLADO - ACUMULACIÓN POR PRODUCTO:
+────────────────────────────────────────────────────────────────────────────
+LAPTOP:
+  Venta 1: +2 → total 2
+  Venta 4: +1 → total 3
+  Venta 8: +1 → total 4
+  → Total Laptop: 4 unidades
+
+MOUSE:
+  Venta 2: +5 → total 5
+  Venta 5: +8 → total 13
+  Venta 10: +6 → total 19
+  → Total Mouse: 19 unidades
+
+TECLADO:
+  Venta 3: +3 → total 3
+  Venta 7: +4 → total 7
+  → Total Teclado: 7 unidades
+
+MONITOR:
+  Venta 6: +2 → total 2
+  Venta 9: +3 → total 5
+  → Total Monitor: 5 unidades
+
+RESULTADO OBTENIDO:
+Producto más vendido: MOUSE
+Cantidad total vendida: 19 unidades
+
+================================================================================
+PASO 4: PRECIO PROMEDIO POR PRODUCTO
+================================================================================
+
+¿QUÉ SE HIZO?
+Se calculó el precio promedio de venta para cada producto.
+
+¿CÓMO SE HIZO?
+1. Se creó un diccionario "precios_por_producto"
+2. Cada valor es una tupla: (suma de ingresos, total de unidades)
+3. Fórmula: precio_promedio = suma_ingresos ÷ total_unidades
+
+CÁLCULO DETALLADO POR PRODUCTO:
+────────────────────────────────────────────────────────────────────────────
+LAPTOP:
+  Ingresos: $1,600 + $800 + $800 = $3,200
+  Unidades: 2 + 1 + 1 = 4
+  Precio promedio = $3,200 ÷ 4 = $800.00
+
+MOUSE:
+  Ingresos: $125 + $200 + $150 = $475
+  Unidades: 5 + 8 + 6 = 19
+  Precio promedio = $475 ÷ 19 = $25.00
+
+TECLADO:
+  Ingresos: $135 + $180 = $315
+  Unidades: 3 + 4 = 7
+  Precio promedio = $315 ÷ 7 = $45.00
+
+MONITOR:
+  Ingresos: $600 + $900 = $1,500
+  Unidades: 2 + 3 = 5
+  Precio promedio = $1,500 ÷ 5 = $300.00
+
+RESULTADO OBTENIDO:
+┌─────────────┬────────────────────────┐
+│ Producto    │ Precio promedio        │
+├─────────────┼────────────────────────┤
+│ Laptop      │ $800.00 por unidad     │
+│ Mouse       │ $25.00 por unidad      │
+│ Teclado     │ $45.00 por unidad      │
+│ Monitor     │ $300.00 por unidad     │
+└─────────────┴────────────────────────┘
+
+================================================================================
+PASO 5: INGRESOS TOTALES POR DÍA
+================================================================================
+
+¿QUÉ SE HIZO?
+Se calculó cuánto dinero se generó cada día.
+
+¿CÓMO SE HIZO?
+1. Se creó un diccionario "ingresos_por_dia"
+2. La clave es la fecha, el valor es la suma de ingresos de ese día
+3. Se sumaron los ingresos de todas las ventas con la misma fecha
+
+CÁLCULO DETALLADO POR DÍA:
+────────────────────────────────────────────────────────────────────────────
+2024-01-01:
+  Venta 1 (Laptop): 2 × $800 = $1,600
+  Venta 2 (Mouse): 5 × $25 = $125
+  Total día = $1,600 + $125 = $1,725
+
+2024-01-02:
+  Venta 3 (Teclado): 3 × $45 = $135
+  Venta 4 (Laptop): 1 × $800 = $800
+  Total día = $135 + $800 = $935
+
+2024-01-03:
+  Venta 5 (Mouse): 8 × $25 = $200
+  Venta 6 (Monitor): 2 × $300 = $600
+  Total día = $200 + $600 = $800
+
+2024-01-04:
+  Venta 7 (Teclado): 4 × $45 = $180
+  Venta 8 (Laptop): 1 × $800 = $800
+  Total día = $180 + $800 = $980
+
+2024-01-05:
+  Venta 9 (Monitor): 3 × $300 = $900
+  Venta 10 (Mouse): 6 × $25 = $150
+  Total día = $900 + $150 = $1,050
+
+RESULTADO OBTENIDO:
+┌────────────┬─────────────────┐
+│ Fecha      │ Ingresos totales│
+├────────────┼─────────────────┤
+│ 2024-01-01 │ $1,725.00       │
+│ 2024-01-02 │ $935.00         │
+│ 2024-01-03 │ $800.00         │
+│ 2024-01-04 │ $980.00         │
+│ 2024-01-05 │ $1,050.00       │
+└────────────┴─────────────────┘
+
+================================================================================
+PASO 6: RESUMEN DE VENTAS POR PRODUCTO (DICCIONARIO ANIDADO)
+================================================================================
+
+¿QUÉ SE HIZO?
+Se creó una estructura de datos organizada que contiene toda la información
+relevante de cada producto en un solo lugar.
+
+¿CÓMO SE HIZO?
+1. Se creó un diccionario "resumen_ventas"
+2. Cada producto tiene un diccionario anidado con 3 claves:
+   - "cantidad_total": unidades vendidas
+   - "ingresos_totales": dinero generado
+   - "precio_promedio": ingreso total ÷ cantidad total
+3. Se calculó el precio promedio dividiendo ingresos totales entre cantidad total
+
+ESTRUCTURA DEL DICCIONARIO ANIDADO:
+────────────────────────────────────────────────────────────────────────────
+resumen_ventas = {
+    "nombre_del_producto": {
+        "cantidad_total": valor,
+        "ingresos_totales": valor,
+        "precio_promedio": valor
+    }
+}
+
+RESULTADO OBTENIDO:
+────────────────────────────────────────────────────────────────────────────
+resumen_ventas = {
+    'Laptop': {
+        'cantidad_total': 4,
+        'ingresos_totales': 3200.00,
+        'precio_promedio': 800.00
+    },
+    'Mouse': {
+        'cantidad_total': 19,
+        'ingresos_totales': 475.00,
+        'precio_promedio': 25.00
+    },
+    'Teclado': {
+        'cantidad_total': 7,
+        'ingresos_totales': 315.00,
+        'precio_promedio': 45.00
+    },
+    'Monitor': {
+        'cantidad_total': 5,
+        'ingresos_totales': 1500.00,
+        'precio_promedio': 300.00
+    }
+}
+
+================================================================================
+RESUMEN DE RESULTADOS FINALES
+================================================================================
+
+┌────────────────────────────────────┬──────────────────────┐
+│ INDICADOR                          │ VALOR                │
+├────────────────────────────────────┼──────────────────────┤
+│ Ingresos totales                   │ $5,490.00            │
+│ Producto más vendido               │ Mouse (19 unidades)  │
+│ Producto con mayor precio          │ Laptop ($800.00)     │
+│ Producto con menor precio          │ Mouse ($25.00)       │
+│ Día con mayores ingresos           │ 2024-01-01 ($1,725)  │
+│ Día con menores ingresos           │ 2024-01-03 ($800)    │
+│ Total de unidades vendidas         │ 35 unidades          │
+│ Promedio de ingresos por día       │ $1,098.00            │
+└────────────────────────────────────┴──────────────────────┘
+
+================================================================================
+CONCLUSIONES DEL ANÁLISIS
+================================================================================
+
+1. El producto más vendido en cantidad es el MOUSE con 19 unidades, representando
+   el 54% del total de unidades vendidas (19 de 35 unidades totales).
+
+2. A pesar de que el Mouse es el más vendido en cantidad, la LAPTOP genera mayores
+   ingresos por unidad ($800 vs $25 del Mouse).
+
+3. El día con mayores ingresos fue el 1 de enero ($1,725), principalmente por la
+   venta de 2 Laptops.
+
+4. El día con menores ingresos fue el 3 de enero ($800), donde solo se vendieron
+   productos de menor precio (Mouse y Monitor).
+
+5. Todos los productos mantienen un precio consistente (no hubo variaciones de
+   precio en las diferentes ventas).
+
+6. El diccionario anidado permite organizar la información de cada producto de
+   forma estructurada y fácil de acceder.
+
+================================================================================
+FIN DEL REPORTE DETALLADO
+================================================================================
